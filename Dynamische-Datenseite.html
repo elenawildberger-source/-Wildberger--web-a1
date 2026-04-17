@@ -1,12 +1,29 @@
 <ul id="liste-linz"></ul>
-<ul id="service-linz"></ul>
+<br><ul id="service-linz"></ul></br>
 
 <script>
-  const stadtteile = ["Urfahr", "Innere Stadt", "Bindermichel"];
+  // Lokale Daten
+  const stadtteile = ["Urfahr", "Innere Stadt", "Bindermichel", "Elena", "Irene"];
   const liste = document.getElementById("liste-linz");
   stadtteile.forEach(s => {
     let li = document.createElement("li");
     li.textContent = s;
     liste.appendChild(li);
   });
+
 </script>
+
+<script>
+ // Daten vom Server laden (Servicecall)
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json()) // Antwort in JSON umwandeln
+    .then(data => {
+      const sListe = document.getElementById("service-liste");
+      data.forEach(user => {
+        let li = document.createElement("li");
+        li.textContent = "User: " + user.name; // Wir greifen auf das Feld 'name' zu
+        sListe.appendChild(li);
+      });
+    });
+</script>
+
